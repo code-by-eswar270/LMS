@@ -33,7 +33,6 @@ public class Emi {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "loan_id", nullable = false)
     private Loan loan;
-
     public enum Status {
         PAID, DUE, OVERDUE
     }
