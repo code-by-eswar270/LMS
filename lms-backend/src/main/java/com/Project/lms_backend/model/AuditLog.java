@@ -1,6 +1,5 @@
 package com.Project.lms_backend.model;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
@@ -30,11 +29,12 @@ public class AuditLog {
     private Loan loan;
 
     @Column(nullable = false)
-    private LocalDateTime timestamp;
+    private LocalDateTime timestamp = LocalDateTime.now();  
 
+    @Column(columnDefinition = "TEXT")
     private String notes;
 
-    // Enum for action
+    // Enum for allowed actions
     public enum Action {
         APPROVED,
         REJECTED,
