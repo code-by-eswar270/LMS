@@ -28,9 +28,10 @@ public class Penalty {
     @Column(nullable = false)
     private BigDecimal amount;
 
-    @Column(nullable = false)
+    @Column(columnDefinition = "TEXT")
     private String reason;
 
     @Column(name = "issued_date", nullable = false)
-    private LocalDateTime issuedDate;
+    private LocalDateTime issuedDate = LocalDateTime.now();
 }
+
