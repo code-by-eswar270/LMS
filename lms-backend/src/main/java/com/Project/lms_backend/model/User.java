@@ -1,4 +1,3 @@
-package com.Project.lms_backend.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
