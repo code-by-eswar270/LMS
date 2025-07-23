@@ -1,6 +1,7 @@
 package com.Project.lms_backend.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
@@ -10,75 +11,58 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 50)
     private String name;
 
-    @Column(nullable = false, unique = true, length = 100)
+    @Column(unique = true, nullable = false)
     private String email;
 
-    @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false, length = 20)
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    @Column(length = 6)
-    private String otp;
+    private Boolean active = true;
 
-    @Column(nullable = false)
-    private boolean otpVerified = false;
+    private LocalDateTime createdAt = LocalDateTime.now();
+
+    // No-arg constructor (required by JPA)
+    public User() {}
+
+    // All-args constructor
+    public User(Long id, String name, String email, String password, Role role, Boolean active, LocalDateTime createdAt) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.active = active;
+        this.createdAt = createdAt;
+    }
 
     // Getters and Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public Long getId() {
-        return id;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public String getName() {
-        return name;
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
 
-    public String getEmail() {
-        return email;
-    }
+    public Role getRole() { return role; }
+    public void setRole(Role role) { this.role = role; }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public Boolean getActive() { return active; }
+    public void setActive(Boolean active) { this.active = active; }
 
-    public String getPassword() {
-        return password;
-    }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public String getOtp() {
-        return otp;
-    }
-
-    public void setOtp(String otp) {
-        this.otp = otp;
-    }
-
-    public boolean isOtpVerified() {
-        return otpVerified;
-    }
-
-    public void setOtpVerified(boolean otpVerified) {
-        this.otpVerified = otpVerified;
-    }
+	public void setRole(Object role2) {
+		// TODO Auto-generated method stub
+		
+	}
 }
