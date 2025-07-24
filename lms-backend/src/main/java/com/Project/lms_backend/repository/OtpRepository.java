@@ -1,12 +1,13 @@
 package com.Project.lms_backend.repository;
 
-import com.Project.lms_backend.model.Otp;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import com.Project.lms_backend.model.Otp;
 
 @Repository
 public interface OtpRepository extends JpaRepository<Otp, Long> {
-    Optional<Otp> findTopByEmailAndTypeAndIsUsedFalseOrderByCreatedAtDesc(String email, String type);
+    Optional<Otp> findTopByEmailAndTypeAndUsedFalseOrderByCreatedAtDesc(String email, String type);
 }
