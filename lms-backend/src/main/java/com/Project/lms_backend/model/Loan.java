@@ -1,6 +1,15 @@
 package com.Project.lms_backend.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
@@ -20,13 +29,13 @@ public class Loan {
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private LoanProduct product;
 
-    @Column(precision = 15, scale = 2)
+    @Column(nullable = false)
     private Double amount;
 
     @Column(name = "term_months")
     private Integer termMonths;
 
-    @Column(name = "interest_rate", precision = 5, scale = 2)
+    @Column(name = "interest_rate", nullable = false)
     private Double interestRate;
 
     @Enumerated(EnumType.STRING)
